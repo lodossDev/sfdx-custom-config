@@ -52,11 +52,11 @@ EXAMPLE
   $ sfdx force:config:var:delete -k laststoredate
 ```
 
-_See code: [src/commands/force/config/var/delete.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.2/src/commands/force/config/var/delete.ts)_
+_See code: [src/commands/force/config/var/delete.ts](https://github.com/lodossDev/sfdx-custom-config/blob/v0.0.2/src/commands/force/config/var/delete.ts)_
 
 ## `sfdx force:config:var:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
-return a specific config entry.
+return a specific config entry. 
 
 ```
 USAGE
@@ -75,7 +75,7 @@ EXAMPLE
            laststoredate  2019-04-17
 ```
 
-_See code: [src/commands/force/config/var/get.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.2/src/commands/force/config/var/get.ts)_
+_See code: [src/commands/force/config/var/get.ts](https://github.com/lodossDev/sfdx-custom-config/blob/v0.0.2/src/commands/force/config/var/get.ts)_
 
 ## `sfdx force:config:var:list [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -98,7 +98,7 @@ EXAMPLE
        nextlunch  Tomorrow is good
 ```
 
-_See code: [src/commands/force/config/var/list.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.2/src/commands/force/config/var/list.ts)_
+_See code: [src/commands/force/config/var/list.ts](https://github.com/lodossDev/sfdx-custom-config/blob/v0.0.2/src/commands/force/config/var/list.ts)_
 
 ## `sfdx force:config:var:set -k <string> -v <string> [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -124,7 +124,7 @@ EXAMPLE
            laststoredate  2019-04-17  test
 ```
 
-_See code: [src/commands/force/config/var/set.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.2/src/commands/force/config/var/set.ts)_
+_See code: [src/commands/force/config/var/set.ts](https://github.com/lodossDev/sfdx-custom-config/blob/v0.0.2/src/commands/force/config/var/set.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin

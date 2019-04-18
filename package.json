@@ -48,7 +48,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "Documents/sfdx-custom-vars",
+  "repository": "https://github.com/lodossDev/sfdx-custom-config",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
