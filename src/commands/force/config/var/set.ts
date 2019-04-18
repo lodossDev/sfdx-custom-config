@@ -12,7 +12,7 @@ export default class CustomConfigSet extends SfdxCommand {
     public static description = 'create a custom config entry.';
 
     public static examples = [
-    `$ sfdx force:config:custom:set -k laststoredate -v 2019-04-17
+    `$ sfdx force:config:var:set -k laststoredate -v 2019-04-17
     `
     ];
     

@@ -12,7 +12,7 @@ export default class CustomConfigList extends SfdxCommand {
     public static description = 'lists all custom config entries.';
 
     public static examples = [
-    `$ sfdx force:config:custom:list
+    `$ sfdx force:config:var:list
     `
     ];
     

@@ -1,4 +1,4 @@
-import { flags, SfdxCommand } from '@salesforce/command';
+import { flags, SfdxCommand, SfdxResult } from '@salesforce/command';
 import { Messages, ConfigFile } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 
@@ -7,12 +7,12 @@ Messages.importMessagesDirectory(__dirname);
 
 const FILE_NAME = 'custom_config.json';
 
-export default class CustomConfigDelete extends SfdxCommand {
+export default class CustomConfigGet extends SfdxCommand {
 
-    public static description = 'delete an entry in the custom config.';
+    public static description = 'return a specific config entry.';
 
     public static examples = [
-    `$ sfdx force:config:custom:delete -k laststoredate
+    `$ sfdx force:config:var:get -k laststoredate
     `
     ];
 
@@ -36,16 +36,26 @@ export default class CustomConfigDelete extends SfdxCommand {
             filename: FILE_NAME
         });
 
-        config.unset(this.flags.key);
-        await config.write();
-
-        if (config.has(this.flags.key)) {
-            this.ux.log('Could not delete entry: ' + this.flags.key);
-        } else {
-            this.ux.log('Entry ' + this.flags.key + ' was removed from config.');
-        }
+        const data = JSON.parse(config.get(this.flags.key) as string);
 
         // Return an object to be displayed with --json
-        return {};
+        return [{  
+            key: this.flags.key, 
+            value: data.value,
+            desc: data.desc
+        }];
     }
+
+    public static result: SfdxResult = {
+        tableColumnData: {
+            columns: [
+                { key: 'key', label: 'Key' },
+                { key: 'value', label: 'Value' },
+                { key: 'desc', label: 'Description' }
+            ]
+        },
+        display() {
+            this.ux.table(<[]>this.data, this.tableColumnData);
+        }
+    };
 }

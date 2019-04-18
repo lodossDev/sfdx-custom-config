@@ -30,18 +30,18 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx force:config:custom:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigcustomdelete--k-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx force:config:custom:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigcustomget--k-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx force:config:custom:list [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigcustomlist---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx force:config:custom:set -k <string> -v <string> [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigcustomset--k-string--v-string--d-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx force:config:var:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigvardelete--k-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx force:config:var:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigvarget--k-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx force:config:var:list [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigvarlist---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx force:config:var:set -k <string> -v <string> [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-forceconfigvarset--k-string--v-string--d-string---json---loglevel-tracedebuginfowarnerrorfatal)
 
-## `sfdx force:config:custom:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx force:config:var:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 delete an entry in the custom config.
 
 ```
 USAGE
-  $ sfdx force:config:custom:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx force:config:var:delete -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
   -k, --key=key                                   (required) The key name.
@@ -49,18 +49,18 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 
 EXAMPLE
-  $ sfdx force:config:custom:delete -k laststoredate
+  $ sfdx force:config:var:delete -k laststoredate
 ```
 
-_See code: [src/commands/force/config/custom/delete.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/custom/delete.ts)_
+_See code: [src/commands/force/config/var/delete.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/delete.ts)_
 
-## `sfdx force:config:custom:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx force:config:var:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 return a specific config entry.
 
 ```
 USAGE
-  $ sfdx force:config:custom:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx force:config:var:get -k <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
   -k, --key=key                                   (required) The key name.
@@ -68,36 +68,36 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 
 EXAMPLE
-  $ sfdx force:config:custom:get -k laststoredate
+  $ sfdx force:config:var:get -k laststoredate
 ```
 
-_See code: [src/commands/force/config/custom/get.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/custom/get.ts)_
+_See code: [src/commands/force/config/var/get.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/get.ts)_
 
-## `sfdx force:config:custom:list [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx force:config:var:list [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 lists all custom config entries.
 
 ```
 USAGE
-  $ sfdx force:config:custom:list [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx force:config:var:list [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
   --json                                          format output as json
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 
 EXAMPLE
-  $ sfdx force:config:custom:list
+  $ sfdx force:config:var:list
 ```
 
-_See code: [src/commands/force/config/custom/list.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/custom/list.ts)_
+_See code: [src/commands/force/config/var/list.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/list.ts)_
 
-## `sfdx force:config:custom:set -k <string> -v <string> [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx force:config:var:set -k <string> -v <string> [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a custom config entry.
 
 ```
 USAGE
-  $ sfdx force:config:custom:set -k <string> -v <string> [-d <string>] [--json] [--loglevel 
+  $ sfdx force:config:var:set -k <string> -v <string> [-d <string>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal]
 
 OPTIONS
@@ -108,10 +108,10 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 
 EXAMPLE
-  $ sfdx force:config:custom:set -k laststoredate -v 2019-04-17
+  $ sfdx force:config:var:set -k laststoredate -v 2019-04-17
 ```
 
-_See code: [src/commands/force/config/custom/set.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/custom/set.ts)_
+_See code: [src/commands/force/config/var/set.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/set.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
