@@ -69,6 +69,10 @@ OPTIONS
 
 EXAMPLE
   $ sfdx force:config:var:get -k laststoredate
+
+           Key            Value       Description
+           ─────────────  ──────────  ───────────
+           laststoredate  2019-04-17
 ```
 
 _See code: [src/commands/force/config/var/get.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/get.ts)_
@@ -87,6 +91,11 @@ OPTIONS
 
 EXAMPLE
   $ sfdx force:config:var:list
+    
+       Key        Value             Description
+       ─────────  ────────────────  ─────────────
+       status     Active            i like cheese
+       nextlunch  Tomorrow is good
 ```
 
 _See code: [src/commands/force/config/var/list.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/list.ts)_
@@ -108,7 +117,11 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 
 EXAMPLE
-  $ sfdx force:config:var:set -k laststoredate -v 2019-04-17
+  $ sfdx force:config:var:set -k laststoredate -v 2019-04-17 -d test
+
+           Key            Value       Description
+           ─────────────  ──────────  ───────────
+           laststoredate  2019-04-17  test
 ```
 
 _See code: [src/commands/force/config/var/set.ts](https://github.com/Documents/sfdx-custom-vars/blob/v0.0.0/src/commands/force/config/var/set.ts)_
