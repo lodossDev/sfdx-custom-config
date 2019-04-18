@@ -13,6 +13,10 @@ export default class CustomConfigGet extends SfdxCommand {
 
     public static examples = [
     `$ sfdx force:config:var:get -k laststoredate
+
+        Key            Value       Description
+        ─────────────  ──────────  ───────────
+        laststoredate  2019-04-17
     `
     ];
 

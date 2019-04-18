@@ -13,6 +13,11 @@ export default class CustomConfigList extends SfdxCommand {
 
     public static examples = [
     `$ sfdx force:config:var:list
+    
+    Key        Value             Description
+    ─────────  ────────────────  ─────────────
+    status     Active            i like cheese
+    nextlunch  Tomorrow is good
     `
     ];
     
