@@ -1,4 +1,4 @@
-import { flags, SfdxCommand } from '@salesforce/command';
+import { flags, SfdxCommand, SfdxResult } from '@salesforce/command';
 import { Messages, ConfigFile } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 
@@ -9,14 +9,12 @@ const FILE_NAME = 'custom_config.json';
 
 export default class CustomConfigGet extends SfdxCommand {
 
-    public static description = 'get custom config var value.';
+    public static description = 'return a specific config entry.';
 
     public static examples = [
     `$ sfdx force:config:custom:get -k laststoredate
     `
     ];
-
-    public static args = [{name: 'file'}];
 
     protected static flagsConfig = {
         // flag with a value (-n, --name=VALUE)
@@ -38,15 +36,26 @@ export default class CustomConfigGet extends SfdxCommand {
             filename: FILE_NAME
         });
 
-        console.log('*********************************************************');
-        console.log('key: ' + this.flags.key);
-        console.log('value: ' + config.get(this.flags.key));
-        console.log('*********************************************************');
-        
+        const data = JSON.parse(config.get(this.flags.key) as string);
+
         // Return an object to be displayed with --json
-        return {  
+        return [{  
             key: this.flags.key, 
-            value: config.get(this.flags.key)
-        };
+            value: data.value,
+            desc: data.desc
+        }];
     }
+
+    public static result: SfdxResult = {
+        tableColumnData: {
+            columns: [
+                { key: 'key', label: 'Key' },
+                { key: 'value', label: 'Value' },
+                { key: 'desc', label: 'Description' }
+            ]
+        },
+        display() {
+            this.ux.table(<[]>this.data, this.tableColumnData);
+        }
+    };
 }

@@ -1,4 +1,4 @@
-import { SfdxCommand, SfdxResult } from '@salesforce/command';
+import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, ConfigFile } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 
@@ -7,16 +7,18 @@ Messages.importMessagesDirectory(__dirname);
 
 const FILE_NAME = 'custom_config.json';
 
-export default class CustomConfigList extends SfdxCommand {
+export default class CustomConfigDelete extends SfdxCommand {
 
-    public static description = 'lists all custom config entries.';
+    public static description = 'delete an entry in the custom config.';
 
     public static examples = [
-    `$ sfdx force:config:custom:list
+    `$ sfdx force:config:custom:delete -k laststoredate
     `
     ];
-    
+
     protected static flagsConfig = {
+        // flag with a value (-n, --name=VALUE)
+        key: flags.string({char: 'k', description: 'The key name.', required: true})
     };
 
     // Comment this out if your command does not require an org username
@@ -34,34 +36,16 @@ export default class CustomConfigList extends SfdxCommand {
             filename: FILE_NAME
         });
 
-        let data = [];
+        config.unset(this.flags.key);
+        await config.write();
 
-        config.forEach((key, value) => {
-            const row = JSON.parse(value as string);
-
-            const item = {
-                key: key,
-                value: row.value,
-                desc: row.desc
-            };
-
-            data.push(item);
-        });
+        if (config.has(this.flags.key)) {
+            this.ux.log('Could not delete entry: ' + this.flags.key);
+        } else {
+            this.ux.log('Entry ' + this.flags.key + ' was removed from config.');
+        }
 
         // Return an object to be displayed with --json
-        return data;
+        return {};
     }
-
-    public static result: SfdxResult = {
-        tableColumnData: {
-            columns: [
-                { key: 'key', label: 'Key' },
-                { key: 'value', label: 'Value' },
-                { key: 'desc', label: 'Description' }
-            ]
-        },
-        display() {
-            this.ux.table(<[]>this.data, this.tableColumnData);
-        }
-    };
 }
